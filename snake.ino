@@ -19,6 +19,7 @@ Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 int16_t start_x = 0;
 int16_t start_y = 0;
 int16_t direction = 0;
+bool run_game = 1;
 
 
 void setup(void) {
@@ -40,43 +41,55 @@ void setup(void) {
 }
 
 void loop() {
-    if (digitalRead(LEFT) == HIGH) {
-        direction = LEFT;
+    if (run_game) {
+        if (digitalRead(LEFT) == HIGH) {
+            direction = LEFT;
+        }
+
+        if (digitalRead(RIGHT) == HIGH) {
+            direction = RIGHT;
+        }
+
+        if (digitalRead(UP) == HIGH) {
+            direction = UP;
+        }
+        if (digitalRead(DOWN) == HIGH) {
+            direction = DOWN;
+        }
+
+        if (direction == LEFT) {
+            tft.fillRect(start_x + STEP, start_y, STEP, SNAKE_SIZE, 0x0);
+            start_x -= STEP;
+            tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
+        }
+        
+        if (direction == RIGHT) {
+            tft.fillRect(start_x, start_y, STEP, SNAKE_SIZE, 0x0);
+            start_x += STEP;
+            tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
+        }
+
+        if (direction == UP) {
+            tft.fillRect(start_x, start_y + STEP, SNAKE_SIZE, STEP, 0x0);
+            start_y -= STEP;
+            tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
+        }
+
+        if (direction == DOWN) {
+            tft.fillRect(start_x, start_y, SNAKE_SIZE, STEP, 0x0);
+            start_y += STEP;
+            tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
+        }
+
+        if (start_x < 0 || start_x > tft.width() || start_y < 0 || start_y > tft.height()) {
+            run_game = 0;
+        }
     }
 
-    if (digitalRead(RIGHT) == HIGH) {
-        direction = RIGHT;
-    }
-
-    if (digitalRead(UP) == HIGH) {
-        direction = UP;
-    }
-    if (digitalRead(DOWN) == HIGH) {
-        direction = DOWN;
-    }
-
-    if (direction == LEFT) {
-        tft.fillRect(start_x + STEP, start_y, STEP, SNAKE_SIZE, 0x0);
-        start_x -= STEP;
-        tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
-    }
-    
-    if (direction == RIGHT) {
-        tft.fillRect(start_x, start_y, STEP, SNAKE_SIZE, 0x0);
-        start_x += STEP;
-        tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
-    }
-
-    if (direction == UP) {
-        tft.fillRect(start_x, start_y + STEP, SNAKE_SIZE, STEP, 0x0);
-        start_y -= STEP;
-        tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
-    }
-
-    if (direction == DOWN) {
-        tft.fillRect(start_x, start_y, SNAKE_SIZE, STEP, 0x0);
-        start_y += STEP;
-        tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
+    else {
+        tft.invertDisplay(1);
+        delay(100);
+        tft.invertDisplay(0);
     }
 
     delay(100);
