@@ -36,7 +36,7 @@ void setup(void) {
     start_x = tft.width() / 2;
     start_y = tft.height() / 2;
     tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
-    delay(4000);
+    delay(1000);
 
 }
 
@@ -81,7 +81,7 @@ void loop() {
             tft.fillRect(start_x, start_y, SNAKE_SIZE, SNAKE_SIZE, 0xffff);
         }
 
-        if (start_x < 0 || start_x > tft.width() || start_y < 0 || start_y > tft.height()) {
+        if (start_x <= 0 || start_x >= tft.width() - SNAKE_SIZE || start_y <= 0 || start_y >= tft.height() - SNAKE_SIZE) {
             run_game = 0;
         }
     }
