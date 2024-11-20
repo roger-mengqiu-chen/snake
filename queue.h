@@ -3,6 +3,8 @@
 #endif
 
 #include <cstdint>
+
+
 class Location {
 private:
   uint8_t m_x;
