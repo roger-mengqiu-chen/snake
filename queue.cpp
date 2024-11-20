@@ -1,30 +1,30 @@
 #include "queue.h"
 
-Location::Location(short x, short y, short z) : m_x(x), m_y(y), m_z(z), next(nullptr) {}
+Location::Location(uint8_t x, uint8_t y, uint8_t z) : m_x(x), m_y(y), m_z(z), next(nullptr) {}
 
 Location::~Location() {}
 
-short Location::get_x() const {
+uint8_t Location::get_x() const {
   return m_x;
 }
 
-void Location::set_x(short x) {
+void Location::set_x(uint8_t x) {
   m_x = x;
 }
 
-short Location::get_y() const {
+uint8_t Location::get_y() const {
   return m_y;
 }
 
-void Location::set_y(short y) {
+void Location::set_y(uint8_t y) {
   m_y = y;
 }
 
-short Location::get_z() const {
+uint8_t Location::get_z() const {
   return m_z;
 }
 
-void Location::set_z(short z) {
+void Location::set_z(uint8_t z) {
   m_z = z;
 }
 
@@ -38,13 +38,14 @@ void Location::set_next(Location& l) {
 
 Queue::Queue() : start(nullptr), end(nullptr), size(0) {}
 
-Queue::Queue(short start_x, short start_y, short start_z) {
+Queue::Queue(uint8_t start_x, uint8_t start_y, uint8_t start_z) {
   start = new Location(start_x, start_y, start_z);
   end = start;
   size = 1;
 }
 
 Queue::~Queue() {
+  Serial.println("deleting queue");
   while (start != nullptr) {
     Location* tmp = start;
     start = start->get_next();
@@ -52,6 +53,7 @@ Queue::~Queue() {
   }
   end = nullptr;
   size = 0;
+  Serial.println("queue deleted");
 }
 
 bool Queue::empty() {

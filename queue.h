@@ -7,20 +7,20 @@
 
 class Location {
 private:
-  short m_x;
-  short m_y;
-  short m_z;
+  uint8_t m_x;
+  uint8_t m_y;
+  uint8_t m_z;
   Location* next;
 public:
-  Location(short _x, short _y, short _z);
+  Location(uint8_t _x, uint8_t _y, uint8_t _z);
   ~Location();
   Location* get_next() const;
-  short get_x() const;
-  void set_x(short x);
-  short get_y() const;
-  void set_y(short y);
-  short get_z() const;
-  void set_z(short z);
+  uint8_t get_x() const;
+  void set_x(uint8_t x);
+  uint8_t get_y() const;
+  void set_y(uint8_t y);
+  uint8_t get_z() const;
+  void set_z(uint8_t z);
   void set_next(Location& l);
 };
 
@@ -32,7 +32,7 @@ private:
   int size;
 public:
   Queue();
-  Queue(short start_x, short start_y, short start_z);
+  Queue(uint8_t start_x, uint8_t start_y, uint8_t start_z);
   ~Queue();
   bool empty();
   Location* pop();

@@ -11,7 +11,6 @@
 #define BACKGROUND     0x0
 #define SNAKE_COLOR    0xffff
 
-#include <cstdint>
 #include <Adafruit_ST7735.h>
 #include "queue.h"
 
@@ -20,14 +19,17 @@ class Snake {
 private:
     Location& head;
     Location& tail;
-    Location& turn_pt;
+    Location& cturn_pt;
     uint8_t head_dir;
     uint8_t tail_dir;
-    uint16_t len;
+    uint8_t len;
     Queue& queue;
-    Adafruit_ST7735& m_tft;
+    Adafruit_ST7735* m_tft;
 public:
-    Snake(Adafruit_ST7735& tft);
+    Snake();
+    Snake(Adafruit_ST7735* tft);
+    Snake(const Snake& s);
+    Snake& operator=(const Snake& s);
     ~Snake();
     void turn(uint8_t direction);
     void h_move();
