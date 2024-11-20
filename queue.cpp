@@ -1,6 +1,6 @@
 #include "queue.h"
 
-Location::Location(uint8_t x, uint8_t y) : m_x(x), m_y(y), next(NULL) {}
+Location::Location(uint8_t x, uint8_t y, uint8_t z) : m_x(x), m_y(y), m_z(z), next(NULL) {}
 
 Location::~Location() {}
 
@@ -12,8 +12,8 @@ void Location::set_next(Location& l) {
   next = &l;
 }
 
-Queue::Queue(uint8_t start_x, uint8_t start_y) {
-  start = new Location(start_x, start_y);
+Queue::Queue(uint8_t start_x, uint8_t start_y, uint8_t start_z) {
+  start = new Location(start_x, start_y, start_z);
   end = start;
   size = 1;
 }
