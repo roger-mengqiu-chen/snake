@@ -8,12 +8,24 @@ short Location::get_x() {
   return m_x;
 }
 
+void Location::set_x(short x) {
+  m_x = x;
+}
+
 short Location::get_y() {
   return m_y;
 }
 
+void Location::set_y(short y) {
+  m_y = y;
+}
+
 short Location::get_z() {
   return m_z;
+}
+
+void Location::set_z(short z) {
+  m_z = z;
 }
 
 Location* Location::get_next() {

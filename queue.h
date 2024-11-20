@@ -14,8 +14,11 @@ public:
   ~Location();
   Location* get_next();
   short get_x();
+  void set_x(short x);
   short get_y();
+  void set_y(short y);
   short get_z();
+  void set_z(short z);
   void set_next(Location& l);
 };
 
