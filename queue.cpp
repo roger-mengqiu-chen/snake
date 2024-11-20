@@ -4,7 +4,7 @@ Location::Location(short x, short y, short z) : m_x(x), m_y(y), m_z(z), next(nul
 
 Location::~Location() {}
 
-short Location::get_x() {
+short Location::get_x() const {
   return m_x;
 }
 
@@ -12,7 +12,7 @@ void Location::set_x(short x) {
   m_x = x;
 }
 
-short Location::get_y() {
+short Location::get_y() const {
   return m_y;
 }
 
@@ -20,7 +20,7 @@ void Location::set_y(short y) {
   m_y = y;
 }
 
-short Location::get_z() {
+short Location::get_z() const {
   return m_z;
 }
 
@@ -28,7 +28,7 @@ void Location::set_z(short z) {
   m_z = z;
 }
 
-Location* Location::get_next() {
+Location* Location::get_next() const {
   return next;
 }
 

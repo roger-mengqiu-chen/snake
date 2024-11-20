@@ -2,6 +2,8 @@
 #define QUEUE_H_
 #endif
 
+#include <Arduino.h>
+
 
 class Location {
 private:
@@ -12,12 +14,12 @@ private:
 public:
   Location(short _x, short _y, short _z);
   ~Location();
-  Location* get_next();
-  short get_x();
+  Location* get_next() const;
+  short get_x() const;
   void set_x(short x);
-  short get_y();
+  short get_y() const;
   void set_y(short y);
-  short get_z();
+  short get_z() const;
   void set_z(short z);
   void set_next(Location& l);
 };
