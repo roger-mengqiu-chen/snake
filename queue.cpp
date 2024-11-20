@@ -1,8 +1,20 @@
 #include "queue.h"
 
-Location::Location(uint8_t x, uint8_t y, uint8_t z) : m_x(x), m_y(y), m_z(z), next(NULL) {}
+Location::Location(short x, short y, short z) : m_x(x), m_y(y), m_z(z), next(nullptr) {}
 
 Location::~Location() {}
+
+short Location::get_x() {
+  return m_x;
+}
+
+short Location::get_y() {
+  return m_y;
+}
+
+short Location::get_z() {
+  return m_z;
+}
 
 Location* Location::get_next() {
   return next;
@@ -12,19 +24,19 @@ void Location::set_next(Location& l) {
   next = &l;
 }
 
-Queue::Queue(uint8_t start_x, uint8_t start_y, uint8_t start_z) {
+Queue::Queue(short start_x, short start_y, short start_z) {
   start = new Location(start_x, start_y, start_z);
   end = start;
   size = 1;
 }
 
 Queue::~Queue() {
-  while (start != NULL) {
+  while (start != nullptr) {
     Location* tmp = start;
     start = start->get_next();
     delete tmp;
   }
-  end = NULL;
+  end = nullptr;
   size = 0;
 }
 
@@ -38,12 +50,12 @@ Location* Queue::pop() {
     start = start->get_next();
     --size;
     if (size == 0) {
-      end = NULL;
+      end = nullptr;
     }
     return res;
   }
   else {
-    return NULL;
+    return nullptr;
   }
 }
 

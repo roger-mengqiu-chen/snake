@@ -2,19 +2,20 @@
 #define QUEUE_H_
 #endif
 
-#include <cstdint>
-
 
 class Location {
 private:
-  uint8_t m_x;
-  uint8_t m_y;
-  uint8_t m_z;
+  short m_x;
+  short m_y;
+  short m_z;
   Location* next;
 public:
-  Location(uint8_t _x, uint8_t _y, uint8_t _z);
+  Location(short _x, short _y, short _z);
   ~Location();
   Location* get_next();
+  short get_x();
+  short get_y();
+  short get_z();
   void set_next(Location& l);
 };
 
@@ -23,9 +24,9 @@ class Queue {
 private:
   Location* start;
   Location* end;
-  uint8_t size;
+  int size;
 public:
-  Queue(uint8_t start_x, uint8_t start_y, uint8_t start_z);
+  Queue(short start_x, short start_y, short start_z);
   ~Queue();
   bool empty();
   Location* pop();
