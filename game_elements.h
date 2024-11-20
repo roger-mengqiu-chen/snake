@@ -2,6 +2,13 @@
 #define GAME_ELEMENTS_H_
 #endif
 
+#define LEFT           5
+#define RIGHT          6
+#define UP             7
+#define DOWN           4
+#define SNAKE_SIZE     4
+#define STEP           2
+
 #include <cstdint>
 #include <Adafruit_ST7735.h>
 #include "queue.h"
@@ -11,17 +18,18 @@ class Snake {
 private:
     Location& head;
     Location& tail;
+    Location& turn_pt;
     uint8_t head_dir;
     uint8_t tail_dir;
     uint16_t len;
     Queue& queue;
     Adafruit_ST7735& m_tft;
 public:
-    Snake(Adafruit_ST7735& tft, uint8_t start_x, uint8_t start_y);
+    Snake(Adafruit_ST7735& tft);
     ~Snake();
+    void turn(uint8_t direction);
     void h_move();
     void t_move();
-    void turn(uint8_t direction);
     void eat();
     bool is_dead();
 };
