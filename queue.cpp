@@ -36,6 +36,8 @@ void Location::set_next(Location& l) {
   next = &l;
 }
 
+Queue::Queue() : start(nullptr), end(nullptr), size(0) {}
+
 Queue::Queue(short start_x, short start_y, short start_z) {
   start = new Location(start_x, start_y, start_z);
   end = start;

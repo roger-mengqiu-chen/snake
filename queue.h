@@ -29,6 +29,7 @@ private:
   Location* end;
   int size;
 public:
+  Queue();
   Queue(short start_x, short start_y, short start_z);
   ~Queue();
   bool empty();
