@@ -8,6 +8,8 @@
 #define DOWN           4
 #define SNAKE_SIZE     4
 #define STEP           2
+#define BACKGROUND     0x0
+#define SNAKE_COLOR    0xffff
 
 #include <cstdint>
 #include <Adafruit_ST7735.h>
