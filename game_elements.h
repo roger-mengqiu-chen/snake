@@ -23,7 +23,7 @@ private:
     uint8_t head_dir;
     uint8_t tail_dir;
     uint8_t len;
-    Queue& queue;
+    Queue* queue;
     Adafruit_ST7735* m_tft;
 public:
     Snake();

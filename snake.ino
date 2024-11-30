@@ -4,18 +4,17 @@
 #include <SPI.h>
 #include "game_elements.h"
 
-#define TFT_CS        10
-#define TFT_RST        9 
-#define TFT_DC         8
-
+#define TFT_CS 10
+#define TFT_RST 9
+#define TFT_DC 8
 
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 
-Snake snake = Snake();
+Snake *snake = nullptr;
 bool run_game = 1;
 
-
-void setup(void) {
+void setup(void)
+{
     Serial.begin(9600);
     pinMode(LEFT, INPUT);
     pinMode(RIGHT, INPUT);
@@ -26,34 +25,38 @@ void setup(void) {
     tft.initR(INITR_144GREENTAB); // Init ST7735R chip, green tab
     tft.setRotation(3);
     tft.fillScreen(0);
-    snake = Snake(&tft);
+    snake = new Snake(&tft);
     delay(1000);
-
 }
 
-void loop() {
+void loop()
+{
 
-    if (digitalRead(LEFT) == HIGH) {
+    if (digitalRead(LEFT) == HIGH)
+    {
         Serial.println("LEFT");
-        snake.turn(LEFT);
+        snake->turn(LEFT);
     }
 
-    if (digitalRead(RIGHT) == HIGH) {
+    if (digitalRead(RIGHT) == HIGH)
+    {
         Serial.println("RIGHT");
         // snake.turn(RIGHT);
     }
 
-    if (digitalRead(UP) == HIGH) {
+    if (digitalRead(UP) == HIGH)
+    {
         Serial.println("UP");
         // snake.turn(UP);
     }
 
-    if (digitalRead(DOWN) == HIGH) {
+    if (digitalRead(DOWN) == HIGH)
+    {
         Serial.println("DOWN");
         // snake.turn(DOWN);
     }
 
-    snake.h_move();
+    snake->h_move();
 
     delay(100);
 }
