@@ -2,6 +2,9 @@
 #define GAME_ELEMENTS_H_
 #endif
 
+#include <Adafruit_ST7735.h>
+#include "queue.h"
+
 #define LEFT           5
 #define RIGHT          6
 #define UP             7
@@ -10,10 +13,6 @@
 #define STEP           2
 #define BACKGROUND     0x0
 #define SNAKE_COLOR    0xffff
-
-#include <Adafruit_ST7735.h>
-#include "queue.h"
-
 
 class Snake {
 private:
