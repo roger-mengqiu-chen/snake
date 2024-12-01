@@ -74,21 +74,21 @@ void Snake::h_move()
     if (head_dir == LEFT)
     {
         head.set_x(head.get_x() - STEP);
-        m_tft->fillRect(head.get_x() - STEP, head.get_y(), STEP, SNAKE_SIZE, SNAKE_COLOR);
+        m_tft->fillRect(head.get_x(), head.get_y(), SNAKE_SIZE, SNAKE_SIZE, SNAKE_COLOR);
     }
     else if (head_dir == RIGHT)
     {
         head.set_x(head.get_x() + STEP);
-        m_tft->fillRect(head.get_x() + STEP, head.get_y(), STEP, SNAKE_SIZE, SNAKE_COLOR);
+        m_tft->fillRect(head.get_x(), head.get_y(), SNAKE_SIZE, SNAKE_SIZE, SNAKE_COLOR);
     }
     else if (head_dir == UP)
     {
         head.set_y(head.get_y() - STEP);
-        m_tft->fillRect(head.get_x(), head.get_y() - STEP, STEP, SNAKE_SIZE, SNAKE_COLOR);
+        m_tft->fillRect(head.get_x(), head.get_y(), SNAKE_SIZE, SNAKE_SIZE, SNAKE_COLOR);
     }
     else if (head_dir == DOWN)
     {
         head.set_y(head.get_y() + STEP);
-        m_tft->fillRect(head.get_x(), head.get_y() + STEP, STEP, SNAKE_SIZE, SNAKE_COLOR);
+        m_tft->fillRect(head.get_x(), head.get_y(), SNAKE_SIZE, SNAKE_SIZE, SNAKE_COLOR);
     }
 }
