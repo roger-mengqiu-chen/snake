@@ -10,7 +10,7 @@
 
 Adafruit_ST7735 tft = Adafruit_ST7735(TFT_CS, TFT_DC, TFT_RST);
 
-Snake *snake = nullptr;
+Snake *snake = new Snake();
 bool run_game = 1;
 
 void setup(void)
@@ -27,6 +27,7 @@ void setup(void)
     tft.fillScreen(0);
     snake = new Snake(&tft);
     delay(1000);
+    Serial.println("Game starts");
 }
 
 void loop()
@@ -41,19 +42,19 @@ void loop()
     if (digitalRead(RIGHT) == HIGH)
     {
         Serial.println("RIGHT");
-        // snake.turn(RIGHT);
+        snake->turn(RIGHT);
     }
 
     if (digitalRead(UP) == HIGH)
     {
         Serial.println("UP");
-        // snake.turn(UP);
+        snake->turn(UP);
     }
 
     if (digitalRead(DOWN) == HIGH)
     {
         Serial.println("DOWN");
-        // snake.turn(DOWN);
+        snake->turn(DOWN);
     }
 
     snake->h_move();

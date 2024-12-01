@@ -20,11 +20,11 @@ Snake::Snake(Adafruit_ST7735 *tft)
     head_dir = 0;
     tail_dir = 0;
     queue = new Queue();
-    Serial.print("color: ");
+    tft->fillRect(head.get_x(), head.get_y(), SNAKE_SIZE, SNAKE_SIZE, SNAKE_COLOR);
+    Serial.print("initialized: ");
     Serial.print(head.get_x());
     Serial.print(" ");
     Serial.println(head.get_y());
-    tft->fillRect(head.get_x(), head.get_y(), SNAKE_SIZE, SNAKE_SIZE, SNAKE_COLOR);
 }
 
 Snake::Snake(const Snake &s)
@@ -73,8 +73,6 @@ void Snake::h_move()
 {
     if (head_dir == LEFT)
     {
-        Serial.print("x: ");
-        Serial.println(head.get_x());
         head.set_x(head.get_x() - STEP);
         m_tft->fillRect(head.get_x() - STEP, head.get_y(), STEP, SNAKE_SIZE, SNAKE_COLOR);
     }
