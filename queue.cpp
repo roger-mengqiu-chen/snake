@@ -91,6 +91,18 @@ Location *Queue::pop()
     }
 }
 
+Location Queue::top() 
+{
+    if (size > 0)
+    {
+        return start;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
 void Queue::push(Location &l)
 {
     if (size == 0)

@@ -38,5 +38,6 @@ public:
     ~Queue();
     bool empty();
     Location *pop();
+    Location *top();
     void push(Location &l);
 };
