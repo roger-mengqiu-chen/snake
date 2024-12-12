@@ -91,7 +91,7 @@ Location *Queue::pop()
     }
 }
 
-Location Queue::top() 
+Location *Queue::top() 
 {
     if (size > 0)
     {
