@@ -58,6 +58,7 @@ void loop()
     }
 
     snake->h_move();
+    snake->t_move();
 
     delay(100);
 }
