@@ -104,6 +104,12 @@ void Snake::h_move()
 void Snake::t_move() 
 {
     Location* next_location = queue->top();
+
+    Serial.print("next tail loc: ");
+    Serial.print(next_location->get_x());
+    Serial.print(" ");
+    Serial.println(next_location->get_y());
+
     if (nullptr != next_location && next_location->get_x() == tail.get_x() && next_location->get_x() == tail.get_x())
     {
         Serial.print("next location: ");
@@ -116,6 +122,9 @@ void Snake::t_move()
         queue->pop();
     }
 
+    Serial.print("tail dir: ");
+    Serial.println(tail_dir);
+
     if (tail_dir == LEFT)
     {
         Serial.println("tail moving left");
@@ -126,5 +135,11 @@ void Snake::t_move()
         Serial.print(tail.get_y());
         Serial.println();
         m_tft->fillRect(tail.get_x(), tail.get_y(), STEP, SNAKE_SIZE, BACKGROUND);
+    }
+
+    if (tail_dir == RIGHT) {
+        Serial.println("tail moving right");
+        tail.set_x(tail.get_x() + STEP);
+        m_tft->fillRect(tail.get_x(), tail.get_y(), -STEP, SNAKE_SIZE, BACKGROUND);
     }
 }
